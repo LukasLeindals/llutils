@@ -20,10 +20,10 @@ pre_upload:
 
 # upload to test pypi
 pypi_test:
-	python -m twine upload --skip-existing -u __token__ -p $(shell cat Tokens/test-token) -r testpypi dist/*
+	python -m twine upload --skip-existing -u __token__ -p $(shell cat tokens/test-token) -r testpypi dist/*
 
 pypi_upload:
-	python -m twine upload --skip-existing -u __token__ -p $(shell cat Tokens/pypi-token) dist/*
+	python -m twine upload --skip-existing -u __token__ -p $(shell cat tokens/pypi-token) dist/*
 
 # ----------------------------------------------------------------------
 # test package with tests in test folder
