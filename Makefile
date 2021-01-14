@@ -5,7 +5,7 @@ message:
 # ----------------------------------------------------------------------
 # upload package
 upload_test: pre_upload pypi_test
-upload_package: pre_upload 
+upload_package: pre_upload pypi_upload
 
 .PHONY: pre_upload
 pre_upload:
@@ -20,8 +20,10 @@ pre_upload:
 
 # upload to test pypi
 pypi_test:
-	python -m twine upload --skip-existing -r testpypi dist/*
+	python -m twine upload --skip-existing -u __token__ -p $(shell cat Tokens/test-token) -r testpypi dist/*
 
+pypi_upload:
+	python -m twine upload --skip-existing -u __token__ -p $(shell cat Tokens/pypi-token) dist/*
 
 # ----------------------------------------------------------------------
 # test package with tests in test folder
